@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "698534462393",
+    "project_id": "ayto-rkmgec-rev2",
+    "storage_bucket": "ayto-rkmgec-rev2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698534462393:android:ffd14da045c90d234f6c68",
+        "android_client_info": {
+          "package_name": "com.example.rider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698534462393-3hhis9f8v5ulbpt6pfi0kgkt9jso18s8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYBARhaqiZf1yISDAiq_QChrzA5IajCT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698534462393-3hhis9f8v5ulbpt6pfi0kgkt9jso18s8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698534462393:android:e7ac29f0cc9b750a4f6c68",
+        "android_client_info": {
+          "package_name": "com.rkmgec.ayto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698534462393-3hhis9f8v5ulbpt6pfi0kgkt9jso18s8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYBARhaqiZf1yISDAiq_QChrzA5IajCT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698534462393-3hhis9f8v5ulbpt6pfi0kgkt9jso18s8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
