@@ -1,29 +1,27 @@
 import 'package:firebase_database/firebase_database.dart';
-import 'package:http/http.dart' as http;
-Future<String> getJsonFromFirebaseRestAPI() async {
-  String url = "https://ayto-rkmgec-rev2-default-rtdb.firebaseio.com/ONLINE.json";
-  http.Response response = await http.get(Uri.parse(url));
-  return response.body;
-}
 
-class SalesData {
-
-  //SalesData(this.month, this.sales);
-
-  var UID;
+class Need {
+  var id;
+  var lat;
+  var long;
   var state;
-  SalesData(this.UID, this.state);
-  factory SalesData.fromJson(Map<String, dynamic> parsedJson) {
-    return SalesData(
-      parsedJson['UID'].toString(),
-      parsedJson['state'].toString(),
-    );
+
+
+  Need(this.id, this.lat, this.long, this.state);
+
+  Need.fromSnapshot(DataSnapshot snapshot) :
+        id = snapshot.key,
+        lat = snapshot.value["lat"],
+        long = snapshot.value["long"],
+        state= snapshot.value["state"];
+
+  toJson() {
+    return {
+      "lat": lat,
+      "long": long,
+      "state": state,
+    };
   }
-  List<SalesData> chartData = [];
-
-
-
-
 }
 
 
