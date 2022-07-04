@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rider/LoginPages/login_Page.dart';
 import 'package:rider/Utilites/routers.dart';
+import 'package:rider/backendwork/DetailsFetch.dart';
 import 'package:rider/mainPage/mainpage.dart';
 
 void main() async {
@@ -36,7 +37,7 @@ class _MyAppState extends State<MyApp> {
         'mainpage':(context)=>MainPage(),
       },
 
-      home: MainPage(),
+      home: Details(),
 
     );
   }
