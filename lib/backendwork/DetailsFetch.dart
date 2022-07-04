@@ -23,6 +23,9 @@ class _DetailsState extends State<Details> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
+
+
+
         height: 100,
         color: Colors.white,
         child: Column(
