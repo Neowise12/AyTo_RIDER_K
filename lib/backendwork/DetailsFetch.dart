@@ -26,6 +26,7 @@ class _DetailsState extends State<Details> {
         height: 100,
         color: Colors.white,
         child: Column(
+
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
