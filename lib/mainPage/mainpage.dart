@@ -1,11 +1,11 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'package:rider/Utilites/brand_colors.dart';
 import 'package:rider/Utilites/mydrawer.dart';
+import 'package:rider/backendwork/DetailsFetch.dart';
+
+
 
 
 class MainPage extends StatefulWidget {
@@ -22,15 +22,15 @@ class _MainPageState extends State<MainPage> {
 
   GoogleMapController? _controller;
   Location currentLocation = Location();
-  Set<Marker> _markers={};
-  double x =0, y=0;
+  final Set<Marker> _markers={};
+  var x , y;
 
 
   late GoogleMapController mapController;
   //final Completer<GoogleMapController> _controller = Completer();
   double mapBottomPadding =0;
   //var geolocator =Geolocator();
-   //late Position currentPosition;
+  //late Position currentPosition;
 
   // void setPositionlocator() async{
   //
@@ -48,17 +48,14 @@ class _MainPageState extends State<MainPage> {
   //   zoom: 14.4746,
   // );
   void getLocation() async{
-    var location = await currentLocation.getLocation();
     currentLocation.onLocationChanged.listen((LocationData loc){
 
-      _controller?.animateCamera(CameraUpdate.newCameraPosition(new CameraPosition(
-        target: LatLng(loc.latitude ?? 0.0,loc.longitude?? 0.0),
+      _controller?.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+        target: LatLng(loc.latitude ?? 0.0, loc.longitude ?? 0.0),
         zoom: 12.0,
       )));
-      print(loc.latitude);
-      print(loc.longitude);
       setState(() {
-        _markers.add(Marker(markerId: MarkerId('Home'),
+        _markers.add(Marker(markerId: const MarkerId('Home'),
             position: LatLng(loc.latitude ?? 0.0, loc.longitude ?? 0.0)
         ));
         x = loc.latitude!;
@@ -67,7 +64,7 @@ class _MainPageState extends State<MainPage> {
 
       });
     });
-    }
+  }
 
   @override
   void initState(){
@@ -95,22 +92,22 @@ class _MainPageState extends State<MainPage> {
               target: LatLng(x,y),
               zoom: 12.0,
             ),
-           onMapCreated: (GoogleMapController controller){
-      _controller = controller;
+            onMapCreated: (GoogleMapController controller){
+              _controller = controller;
 
-      getLocation();
-    },
-    markers: _markers,
+              getLocation();
+            },
+            markers: _markers,
 
 
-          //     setState(() {
-          //       mapBottomPadding= 250;
-          //     });
-          //     setPositionlocator();
-          //
-          //   },
-          //
-           ),
+            //     setState(() {
+            //       mapBottomPadding= 250;
+            //     });
+            //     setPositionlocator();
+            //
+            //   },
+            //
+          ),
           //drawer
           Positioned(
             top: 44,
@@ -121,17 +118,17 @@ class _MainPageState extends State<MainPage> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: const [ BoxShadow(
-                    color:Colors.black26,
-                    blurRadius: 5.0,
-                    spreadRadius: 0.5,
-                    offset: Offset(
-                      0.7,
-                      0.7,
-                    )
-                  )]
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: const [ BoxShadow(
+                        color:Colors.black26,
+                        blurRadius: 5.0,
+                        spreadRadius: 0.5,
+                        offset: Offset(
+                          0.7,
+                          0.7,
+                        )
+                    )]
 
                 ),
                 child: const CircleAvatar(
@@ -150,15 +147,15 @@ class _MainPageState extends State<MainPage> {
             child: Container(
               height: 220,
               decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0)),
-                boxShadow:[ BoxShadow(
-                    color:  Colors.black26,
-                  blurRadius: 15.0,
-                  spreadRadius: 0.5,
-                  offset: Offset(0.7, 0.7)
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0)),
+                  boxShadow:[ BoxShadow(
+                      color:  Colors.black26,
+                      blurRadius: 15.0,
+                      spreadRadius: 0.5,
+                      offset: Offset(0.7, 0.7)
 
-                )]
+                  )]
 
               ),
               child: Padding(
@@ -173,25 +170,31 @@ class _MainPageState extends State<MainPage> {
                     Container(
                       decoration: const BoxDecoration(
                           color: Colors.white,
-                         // color: Colors.white,
+                          // color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                           boxShadow:[ BoxShadow(
-                          color:  Colors.black26,
-                          blurRadius: 15.0,
-                          spreadRadius: 0.5,
-                          offset: Offset(0.7, 0.7)), ]
-                    ),
-                    child: Row(
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(Icons.search,color: Colors.black,),
-                        ),
-                        SizedBox(width: 22,),
-                       Text("Search destination"),
+                              color:  Colors.black26,
+                              blurRadius: 15.0,
+                              spreadRadius: 0.5,
+                              offset: Offset(0.7, 0.7)), ]
+                      ),
+                      child: InkWell(
+                        onTap: (){
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => Details()));
+                        },
+                        child: Row(
+                          children: const [
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Icon(Icons.airport_shuttle_outlined ,color: Colors.black,),
+                            ),
+                            SizedBox(width: 22,),
+                            Text("Check transport availability"),
 
-                      ],
-                    ),),
+                          ],
+                        ),
+                      ),),
                     const SizedBox(height: 22,),
                     Container(
                       decoration: const BoxDecoration(
@@ -214,7 +217,7 @@ class _MainPageState extends State<MainPage> {
 
                         ],
                       ),),
-                        //   SizedBox(height: 22,),
+                    //   SizedBox(height: 22,),
                     // Container(
                     //   decoration: const BoxDecoration(
                     //       color: BrandColors.button,
