@@ -81,10 +81,10 @@ class _LoginPageState extends State<LoginPage> {
                   actions: <Widget>[
                     ElevatedButton(
                       style:
-                          ElevatedButton.styleFrom(primary: BrandColors.button),
+                          ElevatedButton.styleFrom(primary: BrandColors.editText),
                       child: const Text(
                         "Confirm",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
                       onPressed: () async {
                         final code = _codeController.text.trim();

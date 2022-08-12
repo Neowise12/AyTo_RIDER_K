@@ -5,7 +5,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:rider/LoginPages/signUp_page.dart';
 import 'package:rider/mainPage/mainpage.dart';
 import 'package:rider/LoginPages/login_Page.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginState extends StatefulWidget {
   @override
@@ -82,17 +82,17 @@ class HomeScreenState extends State<LoginState> with AfterLayoutMixin<LoginState
       }
       else {
 
-        print('User is signed in!');
-        print('SRMxc=$ss');
-        Fluttertoast.showToast(
-          msg: srm,
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0,
-        );
+        // print('User is signed in!');
+        // print('SRMxc=$ss');
+        // Fluttertoast.showToast(
+        //   msg: srm,
+        //   toastLength: Toast.LENGTH_SHORT,
+        //   gravity: ToastGravity.CENTER,
+        //   timeInSecForIosWeb: 1,
+        //   backgroundColor: Colors.red,
+        //   textColor: Colors.white,
+        //   fontSize: 16.0,
+        // );
         if(ss.compareTo('false')==0||srm.compareTo('false')==0||c>0) {
           Navigator.pushReplacement(
             context,

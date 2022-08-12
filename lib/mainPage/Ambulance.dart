@@ -1,29 +1,27 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'dart:core';
-
 import 'package:rider/Utilites/brand_colors.dart';
-
 import 'package:url_launcher/url_launcher.dart';
 
-class Details extends StatefulWidget {
-  const Details({Key? key}) : super(key: key);
+class Ambulance extends StatefulWidget {
+  const Ambulance({Key? key}) : super(key: key);
 
   @override
-  _DetailsState createState() => _DetailsState();
+  _AmbulanceState createState() => _AmbulanceState();
 }
 
-class _DetailsState extends State<Details> {
+class _AmbulanceState extends State<Ambulance> {
+
   late Query _ref;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _ref = FirebaseDatabase.instance.ref().child("ONLINE").orderByChild("Name");
+    _ref = FirebaseDatabase.instance.ref().child("Ambulance").orderByChild("Name");
+
   }
-
-
   Widget _detailsItem({required Map online}) {
     final call = online['PhoneNumber'];
     return Padding(
@@ -47,7 +45,7 @@ class _DetailsState extends State<Details> {
                   Text(
                     online["Name"],
                     style: const TextStyle(fontSize: 16,
-                    fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold),
 
                   ),
                   const SizedBox(
@@ -55,19 +53,19 @@ class _DetailsState extends State<Details> {
                   ),
                   online["state"] == 1
                       ? const Text(
-                          "Online",
-                          style: TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        )
+                    "Online",
+                    style: TextStyle(
+                      color: Colors.green,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  )
                       : const Text(
-                          "Offline",
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
+                    "Offline",
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
                   const SizedBox(
                     width: 30,
                   ),
@@ -109,7 +107,7 @@ class _DetailsState extends State<Details> {
         //   onPressed: () =>Navigator.pop(
         //       context, MaterialPageRoute(builder: (context) => MainPage()))
         // ),
-        title: const Text("Drivers Available"),
+        title: const Text("Ambulance"),
         backgroundColor: BrandColors.enterphonenumber,
       ),
       // ignore: sized_box_for_whitespace
@@ -127,7 +125,8 @@ class _DetailsState extends State<Details> {
               filteredMap = Map.from(online);
             }
 
-            print(filteredMap);
+            //print(filteredMap);
+            print(_ref);
 
             return _detailsItem(online: online);
           },
@@ -144,89 +143,4 @@ class _DetailsState extends State<Details> {
       throw 'Could not launch $url';
     }
   }
-
-
 }
-
-// import 'package:firebase_database/firebase_database.dart';
-//
-// class Need {
-//   var id;
-//   var lat;
-//   var long;
-//   var state;
-//
-//
-//   Need(this.id, this.lat, this.long, this.state);
-//
-//   Need.fromSnapshot(DataSnapshot snapshot) :
-//         id = snapshot.key,
-//         lat = snapshot.value["lat"],
-//         long = snapshot.value["long"],
-//         state= snapshot.value["state"];
-//
-//   toJson() {
-//     return {
-//       "lat": lat,
-//       "long": long,
-//       "state": state,
-//     };
-//   }
-// }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// /*
-// class Need {
-//   var id;
-//   var lat;
-//   var long;
-//   var state;
-//
-//   Need({
-//     required this.id,
-//     required this.lat,
-//     required this.long,
-//     required this.state,
-//   });
-//
-//   */
-// /*Need.fromSnapshot(DataSnapshot snapshot, this.lat, this.long, this.state) :
-//         id = snapshot.key,
-//         lat = snapshot.value,
-//         long = snapshot.value,
-//         state = snapshot.value;*//*
-//
-//
-//   Future<DatabaseEvent> getItems() {
-//     return FirebaseDatabase().reference().child("items").once();
-//   }
-//
-//
-//   toJson() {
-//     return {
-//       "lat": lat,
-//       "long": long,
-//       "state": state,
-//     };
-//   }
-//
-//   print(getItems()) {
-//     // TODO: implement print
-//     throw UnimplementedError();
-//   }
-// }*/

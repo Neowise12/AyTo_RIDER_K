@@ -3,7 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:rider/Utilites/mydrawer.dart';
-import 'package:rider/backendwork/DetailsFetch.dart';
+import 'package:rider/mainPage/Ambulance.dart';
+import 'package:rider/mainPage/DetailsFetch.dart';
 
 
 
@@ -196,27 +197,34 @@ class _MainPageState extends State<MainPage> {
                         ),
                       ),),
                     const SizedBox(height: 22,),
-                    Container(
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                          boxShadow:[ BoxShadow(
-                              color:  Colors.black26,
-                              blurRadius: 15.0,
-                              spreadRadius: 0.5,
-                              offset: Offset(0.7, 0.7)), ]
-                      ),
-                      child: Row(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Icon(Icons.home,color: Colors.black,),
-                          ),
-                          SizedBox(width: 22,),
-                          Text("Home"),
+                    InkWell(
+                      onTap: (){
+                        Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => Ambulance()));
 
-                        ],
-                      ),),
+                      },
+                      child: Container(
+                        decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                            boxShadow:[ BoxShadow(
+                                color:  Colors.black26,
+                                blurRadius: 15.0,
+                                spreadRadius: 0.5,
+                                offset: Offset(0.7, 0.7)), ]
+                        ),
+                        child: Row(
+                          children: const [
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Icon(Icons.airport_shuttle_outlined ,color: Colors.red,),
+                            ),
+                            SizedBox(width: 22,),
+                            Text("Ambulance"),
+
+                          ],
+                        ),),
+                    ),
                     //   SizedBox(height: 22,),
                     // Container(
                     //   decoration: const BoxDecoration(
