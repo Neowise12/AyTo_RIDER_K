@@ -77,20 +77,28 @@ class _DetailsState extends State<Details> {
                     ),
                     onTap: () {
                       if (online["state"] == 0) {
-                        AlertDialog(
-                          title: Text("The driver is offline"),
-                          content: Text("Still you want to place call"),
-                          actions: [
-                            TextButton(
-                              child: const Text("Call",
-                              style: TextStyle(color: Colors.green),),
-                              onPressed: () {
-                                _makingPhoneCall(phoneNumber: call);
-                              },
-                            )
-                          ],
-                        );
-                      } else {
+                        showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (context){
+
+                          return  AlertDialog(
+                            title: Text("The driver is offline"),
+                            content: Text("Still you want to place call"),
+                            actions: [
+                              TextButton(
+                                child: const Text("Call",
+                                  style: TextStyle(color: Colors.green),),
+                                onPressed: () {
+                                  _makingPhoneCall(phoneNumber: call);
+                                },
+                              )
+                            ],
+                          );
+                        });
+
+                      }
+                      else {
                         _makingPhoneCall(phoneNumber: call);
                       }
                     },
