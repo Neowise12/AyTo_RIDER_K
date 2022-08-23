@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:rider/LoginPages/loginstate.dart';
 import 'package:rider/LoginPages/otp_Page.dart';
 import 'package:rider/LoginPages/signUp_page.dart';
 import 'package:rider/mainPage/mainpage.dart';
@@ -101,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const SignUp(),
+                                  builder: (context) =>  LoginState(),
                                 ),
                               );
                             } else {
@@ -251,7 +252,7 @@ class _LoginPageState extends State<LoginPage> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SignUp()),
+                      MaterialPageRoute(builder: (context) => LoginState()),
                     );
                   },
                   child: Padding(

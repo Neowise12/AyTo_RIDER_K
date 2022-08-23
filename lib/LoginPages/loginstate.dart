@@ -28,7 +28,7 @@ class HomeScreenState extends State<LoginState> with AfterLayoutMixin<LoginState
   void activeListeners(){
     final User? user=auth.currentUser;
     final id=user?.uid ;
-    _database.child('Rider/${user?.uid}/FirstName').onValue.listen((event) {
+    _database.child('rider/${user?.uid}/FirstName').onValue.listen((event) {
       final Object? description=event.snapshot.value ?? false;
       setState(() {
         print('DescriptionLS=$description');

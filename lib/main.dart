@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rider/LoginPages/login_Page.dart';
 import 'package:rider/LoginPages/loginstate.dart';
+import 'package:rider/mainPage/DetailsFetch.dart';
 
 
 import 'package:rider/mainPage/mainpage.dart';
@@ -33,10 +34,7 @@ class _MyAppState extends State<MyApp> {
 
       //FirebaseAuth.instance.currentUser == null ?"login":"mainpage",
 
-      routes: {
-        'login':(context)=>LoginPage(),
-        'mainpage':(context)=>MainPage(),
-      },
+
 
       home:LoginState(),
 
