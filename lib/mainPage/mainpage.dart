@@ -3,8 +3,10 @@ import 'package:flutter/rendering.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:rider/Utilites/mydrawer.dart';
+import 'package:rider/mainPage/Ambulance.dart';
 import 'package:rider/mainPage/DetailsFetch.dart';
-i
+
+
 
 
 
@@ -201,7 +203,7 @@ class _MainPageState extends State<MainPage> {
                     InkWell(
                       onTap: (){
                         Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => Ambulance));
+                            context, MaterialPageRoute(builder: (context) => Ambulance()));
 
                       },
                       child: Container(
@@ -226,28 +228,7 @@ class _MainPageState extends State<MainPage> {
                           ],
                         ),),
                     ),
-                    //   SizedBox(height: 22,),
-                    // Container(
-                    //   decoration: const BoxDecoration(
-                    //       color: BrandColors.button,
-                    //       borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                    //       boxShadow:[ BoxShadow(
-                    //           color:  Colors.black26,
-                    //           blurRadius: 15.0,
-                    //           spreadRadius: 0.5,
-                    //           offset: Offset(0.7, 0.7)), ]
-                    //   ),
-                    //   child: Row(
-                    //     children: const [
-                    //       Padding(
-                    //         padding: EdgeInsets.all(8.0),
-                    //         child: Icon(Icons.home,color: Colors.black,),
-                    //       ),
-                    //       SizedBox(width: 22,),
-                    //       Text("Home"),
-                    //
-                    //     ],
-                    //   ),),
+
 
 
                   ],
