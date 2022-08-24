@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:rider/Backend/ListManipulation.dart';
 import 'package:rider/LoginPages/login_Page.dart';
 import 'package:rider/LoginPages/loginstate.dart';
 import 'package:rider/mainPage/DetailsFetch.dart';
@@ -36,7 +37,7 @@ class _MyAppState extends State<MyApp> {
 
 
 
-      home:LoginState(),
+      home:ListManipulation(),
 
     );
   }

@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ListManipulation extends StatefulWidget {
   const ListManipulation({Key? key}) : super(key: key);
@@ -11,23 +12,61 @@ class ListManipulation extends StatefulWidget {
 }
 
 class _ListManipulationState extends State<ListManipulation> {
-  late Query _ref;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _ref = FirebaseDatabase.instance.ref().child("ONLINE").orderByChild("Name");
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  late List lst=[];
+  void Bis() async {
+    final User user = _auth.currentUser!;
+    final id = user.uid;
+
+     DatabaseReference dref =
+    FirebaseDatabase.instance.ref().child("ONLINE");
+
+
+    dref.onValue.listen((event) {
+      for (final child in event.snapshot.children) {
+        lst.add(child);
+
+      }
+    }, onError: (error) {
+      // Error.
+    });
+   print(lst);
   }
+
+/* dref.addListenerForSingleValueEvent( ValueEventListener() {
+    @Override
+    public void onDataChange(DataSnapshot dataSnapshot) {
+    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+    Map<Double,Double,String> map = (Map) postSnapshot.getValue();
+    if (map != null) {
+    String UID=map.get('uid')
+    Double lat = map.get("lat");
+    Double long = map.get("long");
+    }
+    }
+    }
+
+    @Override
+    public void onCancelled(DatabaseError databaseError) {
+    }
+  });*/
+
+
   @override
   Widget build(BuildContext context) {
 
-    FirebaseAnimatedList(
+    /*FirebaseAnimatedList(
         query: _ref,
         itemBuilder: (BuildContext context, DataSnapshot snapshot,
             Animation<double> animation, int index) {
-          Map? online = (snapshot.value) as Map;
+          Map? online = (snapshot.value) as Map;*/
+    Bis();
+    return Scaffold();
+          Future<dynamic> fileContains(String path, String needle) async {
 
-    return Container();
+          }
 
   }
 /*  double calculateDistance(lat1, lon1, lat2, lon2){
