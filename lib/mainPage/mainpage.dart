@@ -9,6 +9,9 @@ import 'package:rider/mainPage/DetailsFetch.dart';
 
 
 
+
+
+
 class MainPage extends StatefulWidget {
   //final User user;
   // ignore: use_key_in_widget_constructors
@@ -225,28 +228,7 @@ class _MainPageState extends State<MainPage> {
                           ],
                         ),),
                     ),
-                    //   SizedBox(height: 22,),
-                    // Container(
-                    //   decoration: const BoxDecoration(
-                    //       color: BrandColors.button,
-                    //       borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                    //       boxShadow:[ BoxShadow(
-                    //           color:  Colors.black26,
-                    //           blurRadius: 15.0,
-                    //           spreadRadius: 0.5,
-                    //           offset: Offset(0.7, 0.7)), ]
-                    //   ),
-                    //   child: Row(
-                    //     children: const [
-                    //       Padding(
-                    //         padding: EdgeInsets.all(8.0),
-                    //         child: Icon(Icons.home,color: Colors.black,),
-                    //       ),
-                    //       SizedBox(width: 22,),
-                    //       Text("Home"),
-                    //
-                    //     ],
-                    //   ),),
+
 
 
                   ],
