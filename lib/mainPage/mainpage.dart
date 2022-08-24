@@ -3,8 +3,9 @@ import 'package:flutter/rendering.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:rider/Utilites/mydrawer.dart';
-import 'package:rider/mainPage/Ambulance.dart';
 import 'package:rider/mainPage/DetailsFetch.dart';
+i
+
 
 
 
@@ -200,7 +201,7 @@ class _MainPageState extends State<MainPage> {
                     InkWell(
                       onTap: (){
                         Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => Ambulance()));
+                            context, MaterialPageRoute(builder: (context) => Ambulance));
 
                       },
                       child: Container(

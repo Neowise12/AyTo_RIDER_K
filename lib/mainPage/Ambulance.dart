@@ -22,78 +22,69 @@ class _AmbulanceState extends State<Ambulance> {
     _ref = FirebaseDatabase.instance.ref().child("Ambulance").orderByChild("Name");
 
   }
-  Widget _detailsItem({required Map online}) {
+  Widget _detailsItem2({required Map online}) {
     final call = online['PhoneNumber'];
-    return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Container(
-        height: 45,
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              color: Colors.white,
-              child: Row(
-                children: [
-                  const Icon(Icons.person),
-                  const SizedBox(
-                    width: 10,
-                  ),
-
-                  Text(
-                    online["Name"],
-                    style: const TextStyle(fontSize: 16,
-                        fontWeight: FontWeight.bold),
-
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  online["state"] == 1
-                      ? const Text(
-                    "Online",
-                    style: TextStyle(
-                      color: Colors.green,
-                      fontWeight: FontWeight.w300,
-                    ),
-                  )
-                      : const Text(
-                    "Offline",
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 30,
-                  ),
-                  InkWell(
-
-                    child: const Icon(Icons.add_call, color: Colors.green,),
-                    onTap: (){
-                      _makingPhoneCall(phoneNumber: call);
-
-
-                    },
-
-                  ),
-
-
-                  //online["states"] == 1? Icon(Icons.online_prediction):Icon(Icons.offline_bolt),
-                ],
-              ),
-            ),
-            const Divider(
-              height: 20,
-              thickness: 2,
-              //indent: 20,
-              endIndent: 0,
-              color: Colors.black,
-            ),
-          ],
+    return ListTile(
+      leading: Icon(Icons.person),
+      title: Text(
+        online["Name"],
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      ),
+      subtitle: online["state"] == 1
+          ? const Text(
+        "Online",
+        style: TextStyle(
+          color: Colors.green,
+          fontWeight: FontWeight.w300,
         ),
+      )
+          : const Text(
+        "Offline",
+        style: TextStyle(
+          color: Colors.red,
+          fontWeight: FontWeight.w300,
+        ),
+      ),
+      trailing: Wrap(
+        spacing: 12,
+        children: [
+          InkWell(
+            child: const Icon(
+              Icons.add_call,
+              color: Colors.green,
+            ),
+            onTap: () {
+              if (online["state"] == 0) {
+                showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text("The driver is offline"),
+                        content: Text("Still you want to place call"),
+                        actions: [
+                          TextButton(
+                            child: const Text(
+                              "Call",
+                              style: TextStyle(color: Colors.green),
+                            ),
+                            onPressed: () {
+                              _makingPhoneCall(phoneNumber: call);
+                            },
+                          )
+                        ],
+                      );
+                    });
+              } else {
+                _makingPhoneCall(phoneNumber: call);
+              }
+            },
+          ),
+          const Icon(
+            Icons.notifications_active,
+            color: Colors.amber,
+          )
+        ],
       ),
     );
   }
@@ -128,7 +119,7 @@ class _AmbulanceState extends State<Ambulance> {
             //print(filteredMap);
             print(_ref);
 
-            return _detailsItem(online: online);
+            return _detailsItem2(online: online);
           },
         ),
       ),
